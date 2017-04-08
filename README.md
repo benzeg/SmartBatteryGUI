@@ -1,8 +1,8 @@
-#Install
+Install
 ---
 npm install
 
 ---
-#Run
+Run
 ---
 npm start
