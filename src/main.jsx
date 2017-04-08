@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import App from './App.jsx';
 import Form from './components/Form.jsx';
 import Home from './components/Home.jsx';
+import Report from './components/Report.jsx';
 
 document.addEventListener('DOMContentLoaded', function() {
 	render(
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				<Route path="/" component={App} />
 				<Route exact path="/" component={Home} />
 				<Route path="/form" component={Form} />
+				<Route path="/report"  component={Report} />
 			</div>
 		</BrowserRouter>, document.getElementById('App'));
 });
