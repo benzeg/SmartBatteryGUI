@@ -4,8 +4,10 @@ const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'dev';
 const path = require('path');
 const bodyParser = require('body-parser');
+const analyzer = require('./server/solarAnalyzer.js');
  
 app.use(express.static(__dirname + '/www'));
+app.use(bodyParser.json());
 
 if (env === 'dev') {
   const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -23,6 +25,8 @@ if (env === 'dev') {
     historyApiFallback: true,
   }));
 }
+
+app.post('/upload', analyzer.start);
 
  
 const server = app.listen(port, function() {

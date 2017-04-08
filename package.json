@@ -26,6 +26,7 @@
     "babel-preset-env": "^1.2.2",
     "babel-preset-react": "^6.23.0",
     "body-parser": "^1.17.1",
+    "child-process": "^1.0.2",
     "d3": "^4.7.4",
     "express": "^4.15.2",
     "jquery": "^3.2.1",
