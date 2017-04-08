@@ -12,7 +12,7 @@ class App extends React.Component {
 				<h1>Microgrid Optimization</h1>
 				<ul role="nav">
 					<li><NavLink to="/">Home</NavLink></li>
-					<li><NavLink to="/form">Form</NavLink></li>
+					<li><NavLink to="/CommercialUsesForm">New Analysis</NavLink></li>
 				</ul>
 			</div>
 			)
