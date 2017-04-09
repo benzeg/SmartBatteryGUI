@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'dev';
 const path = require('path');
 const bodyParser = require('body-parser');
-const analyzer = require('./server/solarAnalyzer.js');
+const api = require('./server/api.js');
  
 app.use(express.static(__dirname + '/www'));
 app.use(bodyParser.json());
@@ -26,7 +26,8 @@ if (env === 'dev') {
   }));
 }
 
-app.post('/upload', analyzer.start);
+app.post('/upload', api.sendAnalysis);
+app.get('/analysis', api.getAnalysis);
 
  
 const server = app.listen(port, function() {

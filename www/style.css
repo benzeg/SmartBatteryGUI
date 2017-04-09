@@ -1,0 +1,14 @@
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: left;
+}
+input {
+  display: inline-block;
+  float: left;
+}
+ul {
+  list-style-type: none;
+}
