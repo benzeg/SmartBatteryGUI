@@ -23,14 +23,14 @@ class ConsumptionCsvForm extends React.Component {
         <h2>Utility</h2>
         <ul>
           <li>
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <form onSubmit={this.handleSubmit}>
               <label>Energy Consumption 8760:
               <input type="file"
                     name="Energy Consumption 8760"
               		  accept=".csv"
               			placeholder="file.csv"
               		  className="inputClass"
-              			onChange={this.handleChange.bind(this)} /></label>
+              			onChange={this.handleChange} /></label>
               <button type="submit">Next</button>
             </form>
           </li>
