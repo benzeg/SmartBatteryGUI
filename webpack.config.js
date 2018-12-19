@@ -1,28 +1,40 @@
 const path = require('path');
- 
+const env = process.env.NODE_ENV;
+
 module.exports = {
-  context: path.join(__dirname, 'src'),
-  entry: [
-    './main.jsx',
-  ],
-  output: {
-    path: path.join(__dirname, 'www'),
-    filename: 'bundle.js',
+  context: path.resolve(__dirname),
+  entry: {
+    index: './client/main.jsx',
   },
+  output: {
+    path: path.resolve(__dirname, 'www'),
+    filename: '[name].bundle.js'
+  },
+  mode: env || 'development',
   module: {
     rules: [
       {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
-        use: [
-          'babel-loader',
-        ],
+        test: /\.(jsx|js)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader'
+        }
       },
-    ],
+      {
+        test: /\.(eot|svg|ttf|woff(2)?)$/,
+        use: [
+          { loader: 'file-loader' }
+        ]
+      }, {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader'},
+          { loader: 'css-loader'}
+        ]
+      }
+    ]
   },
   resolve: {
-    modules: [
-      path.join(__dirname, 'node_modules'),
-    ],
-  },
-};
+    extensions: ['.js', '.json', '.jsx']
+  }
+}
