@@ -1,23 +1,15 @@
+const router = require('express').Router();
 const solarAnalyzer = require('./solarAnalyzer.js');
 const path = require('path');
 
-const sendAnalysis = function(req, res) {
+router.post( function(req, res) {
 	solarAnalyzer(function(err, graphPaths) {
-		if (err) {
-			res.status(500);
-			res.end();
-		} else {
-			res.status(200);
-			res.end();
-		}
+		res.status( err ? 500: 200 ).end();	
 	})
-}
-
-const getAnalysis = function(req, res) {
+});
+router.get( function(req, res) {
 	res.status(200);
-	res.sendFile(path.join(__dirname + '/utility/multiseries.png'));
-	res.end();
-}
+	res.sendFile(path.join(__dirname + '/utility/multiseries.png')).end();
+})
 
-module.exports = {sendAnalysis: sendAnalysis,
-									getAnalysis: getAnalysis};
+module.exports = router;

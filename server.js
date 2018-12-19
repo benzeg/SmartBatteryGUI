@@ -6,9 +6,7 @@ const app = express();
 
 app.use(express.static(__dirname + '/www'));
 app.use(bodyParser.json());
-
-app.post('/upload', api.sendAnalysis);
-app.get('/analysis', api.getAnalysis);
+app.use('/analysis', api);
  
 const server = app.listen(port, function() {
   const host = server.address().address;
