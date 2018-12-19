@@ -1,13 +1,11 @@
 import React from 'react';
-import NavLink from './NavLink.jsx';
-import FileInput from 'react-file-input';
 
 class ElectricRateCsvForm extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 
-	handleSubmit(event) {
+	handleSubmit=(event)=> {
     event.preventDefault();
     const userName = event.target.elements[0].value;
     //pop-up message when no file is selected
@@ -16,7 +14,7 @@ class ElectricRateCsvForm extends React.Component {
     this.props.history.push(path);
   }
 
-  handleChange(event) {
+  handleChange=(event)=> {
   	this.setState({electriccsv: event.target.files[0]});
   }
 
@@ -26,13 +24,14 @@ class ElectricRateCsvForm extends React.Component {
         <h2>Utility</h2>
         <ul>
           <li>
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <form onSubmit={this.handleSubmit}>
               <label>Electricity Rate:
-              <FileInput name="Electricity Rate"
-              					 accept=".csv"
-              					 placeholder="file.csv"
-              					 className="inputClass"
-              					 onChange={this.handleChange.bind(this)} /></label>
+              <input type="file"
+                  name="Electricity Rate"
+                  accept=".csv"
+                  placeholder="file.csv"
+                  className="inputClass"
+                  onChange={this.handleChange} /></label>
               <button type="submit">Next</button>
             </form>
           </li>
