@@ -1,11 +1,10 @@
 {
-  "name": "suncodeChallenge",
+  "name": "SmartGridBatteryClient",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clientDev": "webpack --progress --colors --watch",
-    "serverDev": "nodemon server.js",
+    "build": "webpack --progress --colors --watch",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,25 +20,28 @@
   },
   "homepage": "https://github.com/benzeg/suncodeChallenge#readme",
   "dependencies": {
-    "axios": "^0.16.1",
-    "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
-    "babel-preset-env": "^1.2.2",
-    "babel-preset-react": "^6.23.0",
-    "body-parser": "^1.17.1",
+    "axios": "^0.18.0",
     "child-process": "^1.0.2",
-    "d3": "^4.7.4",
     "express": "^4.15.2",
-    "jquery": "^3.2.1",
-    "nodemon": "^1.11.0",
-    "react": "^15.4.2",
-    "react-bootstrap": "^0.30.8",
-    "react-d3-library": "^1.1.8",
-    "react-dom": "^15.5.3",
-    "react-file-input": "^0.2.5",
+    "react": "^16.6.3",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.6.3",
     "react-router": "^4.0.0",
-    "react-router-dom": "^4.0.0",
-    "webpack": "^2.3.2",
-    "webpack-dev-middleware": "^1.10.1"
+    "react-router-dom": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.2.0",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^2.0.1",
+    "file-loader": "^2.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.28.0",
+    "webpack-cli": "^3.1.2"
   }
 }
