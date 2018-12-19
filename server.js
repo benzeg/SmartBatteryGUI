@@ -15,3 +15,10 @@ const server = app.listen(port, function() {
   const port = server.address().port;
   console.log('App listening at http://%s:%s', host, port);
 });
+
+process.on('SIGTERM', shutDown);
+process.on('SIGINT', shutDown);
+
+function shutDown() {
+  server.close( ()=> console.log('Server shut down complete'));
+}
