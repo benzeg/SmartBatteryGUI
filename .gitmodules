@@ -1,0 +1,3 @@
+[submodule "smart-battery-for-smart-energy-usage"]
+	path = smart-battery-for-smart-energy-usage
+	url = https://github.com/AnatolyPavlov/smart-battery-for-smart-energy-usage.git
