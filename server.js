@@ -1,12 +1,15 @@
 const express = require('express');
+const path = require('path');
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
-const api = require('./server/api.js');
 const app = express();
 
 app.use(express.static(__dirname + '/www'));
 app.use(bodyParser.json());
-app.use('/analysis', api);
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/www/index.html'));
+});
  
 const server = app.listen(port, function() {
   const host = server.address().address;

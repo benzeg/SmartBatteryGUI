@@ -1,14 +1,26 @@
-label{
-    display: inline-block;
-    float: left;
-    clear: left;
-    width: 250px;
-    text-align: left;
+#main {
+  padding-left: 30px;
 }
-input {
-  display: inline-block;
-  float: left;
+
+#nav {
+  position: absolute;
+  left: 0;
 }
-ul {
-  list-style-type: none;
+
+#nav + * {
+  margin-top: calc(3em + 15px);
 }
+
+form {
+  display: flex;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset + fieldset {
+  margin-left: 30px;
+}
+

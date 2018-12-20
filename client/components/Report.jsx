@@ -1,5 +1,4 @@
 import React from 'react';
-import getData from './../helpers/analysisHelpers.js';
 import {Grid, Row, Col, Image} from 'react-bootstrap';
 
 var imgStyle = {
@@ -10,23 +9,11 @@ var imgStyle = {
 class Report extends React.Component {
 	constructor(props) {
 		super(props);
-    console.log(this.props);
 	}
-
-  componentWillMount() {
-    getData(function(err, graph) {
-      if (err) {
-        console.log('error getting graph')
-      } else {
-        this.setState({graph: graph});
-        console.log(this.state.graph);
-      }
-    })
-  }
 
   render() {
     return (
-      <div>{console.log(window.graph)}
+      <div>
         <h2>Report</h2>
         <Grid fluid={true}>
           <Row className="show-grid">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col, PanelGroup, Panel } from 'react-bootstrap';
+import update from 'immutability-helper';
 
 const formManual = [
   ["Demand charges", "Reduces customer peak demand charge by supplying power during demand spikes."],
@@ -11,30 +12,47 @@ const formManual = [
 ];
 
 class CommercialUsesForm extends React.Component {
-	constructor(props) {
+  constructor(props) {
     super(props);
-	}
+    const initialState = {
+      demandCharges: false,
+      arbitrage: false,
+      peekingCapacity: false,
+      transmissionDistribution: false,
+      distributionGeneration: false,
+      ancillary: false,
+      csvFile: null
+    }
+    const session = window.sessionStorage.getItem('form-data-CommercialUses');
+    if (session) Object.assign(initialState, JSON.parse(session));
+    this.state = initialState;
+  }
 
-	handleSubmit = (event)=> {
+  handleSubmit = (event) => {
     event.preventDefault();
     const path = "/BatteryDesignForm";
-    const userChoices = [];
-    for(var key in this.state) {
-      userChoices.push(key);
-    }
-    window.commercialuses = userChoices;
+    const formData = Object.assign(this.state);
+    window.sessionStorage.setItem('form-data-CommercialUses', JSON.stringify(formData));
     this.props.history.push(path);
   }
 
-  handleInputChange=(event)=> {
+  handleInputChange = (event) => {
     const target = event.target;
-    const value = target.type === 'checked' ? target.checked: target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    this.setState({[name]: value});
+    this.setState(
+      update(this.state, {
+        [name]: { $set: value }
+      })
+    );
   }
 
-  handleUploadChange=(event)=> {
-    window.consumptioncsv = event.target.files[0];
+  handleUploadChange = (event) => {
+    this.setState(
+      update(this.state, {
+        [event.target.name]: { $set: event.target.files[0] }
+      })
+    );
   }
 
   render() {
@@ -44,54 +62,56 @@ class CommercialUsesForm extends React.Component {
         <Grid fluid={true}>
           <Row className="show-grid">
             <Col xs={6} md={4}>
-              <ul>
-                <li>
-                  <form onSubmit={this.handleSubmit}>
-                    <li><label>
-                      <input name="demandCharges" type="checkbox"
-                             onChange={this.handleInputChange} />
-                      Demand charges</label></li>
-                    <li><label>
-                      <input name="arbitrage" type="checkbox"
-                             onChange={this.handleInputChange} />
-                      Arbitrage</label></li>
-                    <li><label>
-                      <input name="peakingcapacity" type="checkbox"
-                             onChange={this.handleInputChange} />
-                      Peaking Capacity (e-mobility)</label></li>
-                       <li><label>
-                      <input name="transmissiondist" type="checkbox"
-                             onChange={this.handleInputChange} />
-                      Transmission and distribution investment deferment (e-mobility)</label></li>
-                      <li><label>
-                      <input name="distributedGen" type="checkbox"
-                             onChange={this.handleInputChange} />
-                      Distributed Generation Support / Distributed Storage (e-mobility)</label></li>
-                    <li><label>
-                      <input name="ancillary" type="checkbox"
-                             onChange={this.handleInputChange} />
-                      Ancillary Services</label></li>
-                    <li><label>Additional grid data: <input type="file" 
-                              name="Additional grid data"
-                              accept=".csv"
-                              placeholder="file.csv"
-                              className="inputClass"
-                              onChange={this.handleChange} /></label></li>
-                    <li>
-                      <button type="submit">Next</button>
-                    </li>
-                  </form>
-                </li>
-              </ul>
+
+
+              <form onSubmit={this.handleSubmit}>
+                <fieldset>
+                  <label>
+                    <br /><input name="demandCharges" type="checkbox" checked={this.state["demandCharges"]}
+                      onChange={this.handleInputChange} />
+                    Demand charges</label>
+                  <label>
+                    <br /><input name="arbitrage" type="checkbox" checked={this.state["arbitrage"]}
+                      onChange={this.handleInputChange} />
+                    Arbitrage</label>
+                  <label>
+                    <br /><input name="peakingCapacity" type="checkbox" checked={this.state["peakingCapacity"]}
+                      onChange={this.handleInputChange} />
+                    Peaking Capacity (e-mobility)</label>
+                  <label>
+                    <br /><input name="transmissionDistribution" type="checkbox" checked={this.state["transmissionDistribution"]}
+                      onChange={this.handleInputChange} />
+                    Transmission and distribution investment deferment (e-mobility)</label>
+                  <label>
+                    <br /><input name="distributedGen" type="checkbox" checked={this.state["distributionGeneration"]}
+                      onChange={this.handleInputChange} />
+                    Distributed Generation Support / Distributed Storage (e-mobility)</label>
+                  <label>
+                    <br /><input name="ancillary" type="checkbox" checked={this.state["ancillary"]}
+                      onChange={this.handleInputChange} />
+                    Ancillary Services</label>
+                  <label>Additional grid data: <br /><input type="file" checked={this.state["csvFile"]}
+                    name="Additional grid data"
+                    accept=".csv"
+                    placeholder="file.csv"
+                    className="inputClass"
+                    onChange={this.handleChange} /></label>
+                </fieldset>
+                <fieldset>
+                  <button type="submit">Next</button>
+                </fieldset>
+              </form>
+
+
             </Col>
             <Col xs={6}>
               <PanelGroup accordion id="commercialUses_manual" >
-                {formManual.map((d, index)=>
-                  <Panel eventKey={ index.toString() } key={ `commercialUses_manual_childPanel_${index}`}>
+                {formManual.map((d, index) =>
+                  <Panel eventKey={index.toString()} key={`commercialUses_manual_childPanel_${index}`}>
                     <Panel.Heading>
-                      <Panel.Title toggle>{d[0]}</Panel.Title>    
+                      <Panel.Title toggle>{d[0]}</Panel.Title>
                     </Panel.Heading>
-                    <Panel.Body collapsible>{d[1]}</Panel.Body> 
+                    <Panel.Body collapsible>{d[1]}</Panel.Body>
                   </Panel>
                 )}
               </PanelGroup>

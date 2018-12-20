@@ -1,5 +1,5 @@
 {
-  "name": "SmartGridBatteryClient",
+  "name": "SmartBatteryGUI",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -23,6 +23,7 @@
     "axios": "^0.18.0",
     "child-process": "^1.0.2",
     "express": "^4.15.2",
+    "immutability-helper": "^2.9.0",
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",

@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
-import App from './App.jsx';
-import Home from './components/Home.jsx';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import CommercialUsesForm from './components/CommercialUsesForm.jsx';
 import BatteryDesignForm from './components/BatteryDesignForm.jsx';
 import SolarCsvForm from './components/SolarCsvForm.jsx';
@@ -11,22 +9,63 @@ import ElectricRateCsvForm from './components/ElectricRateCsvForm.jsx';
 import Report from './components/Report.jsx';
 import CapexForm from './components/CapexForm.jsx';
 import OpexForm from './components/OpexForm.jsx';
+import { Breadcrumb } from 'react-bootstrap';
 
+const formPages = {
+	list: [
+		'/',
+		'/CommercialUsesForm',
+		'/BatteryDesignForm',
+		'/CapexForm',
+		'/OpexForm',
+		'/SolarCsvForm',
+		'/ConsumptionCsvForm',
+		'/ElectricRateCsvForm',
+		'/Report'],
+	parseTitle: function(path) { return path.replace(/\//g, '').replace(/Csv/g, '').replace(/Form/g, '').replace(/[a-z](?=[A-Z])/g, '$& ')} 	
+};
+
+class Main extends Component {
+	constructor(props) {
+		super(props);
+	}
+
+	componentDidMount() {
+		//session store to keep form data, removed on browser close
+		const store = window.sessionStorage;
+		store.setItem('form-data',  new Map());
+	}
+
+	render() {
+		return (
+			<div id="main">
+				<h1>Smart Battery GUI</h1>
+				<Breadcrumb id="nav">
+					{formPages.list.map((d, index)=>
+						<Breadcrumb.Item key={index} href={d} active={this.props.history.location.pathname === d}>
+							{formPages.parseTitle(d)}
+						</Breadcrumb.Item>
+					)}
+				</Breadcrumb>
+				<div>
+					<Route exact path="/" component={()=><Redirect to="/CommercialUsesForm"/>} />
+					<Route path="/CommercialUsesForm" component={CommercialUsesForm} />
+					<Route path="/BatteryDesignForm" component={BatteryDesignForm} />
+					<Route path="/CapexForm" component={CapexForm} />
+					<Route path="/OpexForm" component={OpexForm} />
+					<Route path="/SolarCsvForm" component={SolarCsvForm} />
+					<Route path="/ConsumptionCsvForm" component={ConsumptionCsvForm} />
+					<Route path="/ElectricRateCsvForm" component={ElectricRateCsvForm} />
+					<Route path="/Report" component={Report} />
+				</div>
+			</div>
+		)
+	}
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-	render(
-		<BrowserRouter>
-			<div>
-				<Route path="/" component={App} />
-				<Route exact path="/" component={Home} />
-				<Route path="/CommercialUsesForm" component={CommercialUsesForm} />
-				<Route path="/BatteryDesignForm" component={BatteryDesignForm} />
-				<Route path="/CapexForm" component={CapexForm} />
-				<Route path="/OpexForm" component={OpexForm} />
-				<Route path="/SolarCsvForm" component={SolarCsvForm} />
-				<Route path="/ConsumptionCsvForm"  component={ConsumptionCsvForm} />
-				<Route path="/ElectricRateCsvForm" component={ElectricRateCsvForm} />
-				<Route path="/Report" component={Report} />
-			</div>
-		</BrowserRouter>, document.getElementById('App'));
-});
+	const app = document.createElement('div');
+    app.setAttribute('id', 'app');
+    document.body.insertAdjacentElement('afterbegin', app);
+	render( <BrowserRouter><Route path="/" component={Main}></Route></BrowserRouter>, app);
+}); 

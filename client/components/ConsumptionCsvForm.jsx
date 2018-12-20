@@ -1,40 +1,52 @@
 import React from 'react';
-
+import update from 'immutability-helper';
 class ConsumptionCsvForm extends React.Component {
 	constructor(props) {
-		super(props);
-	}
+    super(props);
+    const initialState = {
+      csvFile: null
+    }
+    const session = window.sessionStorage.getItem('form-data-Consumption');
+    if(session) Object.assign(initialState, JSON.parse(session));
+    this.state = initialState;
+  }
 
 	handleSubmit=(event)=> {
     event.preventDefault();
     const path = "/ElectricRateCsvForm";
-    //pop-up message when no file is selected
-    window.consumptioncsv = this.state === null ? "None": this.state.consumptioncsv;
+    const formData = Object.assign(this.state);
+    window.sessionStorage.setItem('form-data-Consumption', JSON.stringify(formData));
     this.props.history.push(path);
   }
 
   handleChange=(event)=> {
-  	this.setState({consumptioncsv: event.target.files[0]});
+    this.setState(
+      update(this.state, {
+        [event.target.name]: {$set: event.target.files[0]}
+      })
+    );
   }
 
   render() {
     return (
       <div>
         <h2>Utility</h2>
-        <ul>
-          <li>
-            <form onSubmit={this.handleSubmit}>
-              <label>Energy Consumption 8760:
-              <input type="file"
-                    name="Energy Consumption 8760"
-              		  accept=".csv"
-              			placeholder="file.csv"
-              		  className="inputClass"
-              			onChange={this.handleChange} /></label>
-              <button type="submit">Next</button>
-            </form>
-          </li>
-        </ul>
+
+        <form onSubmit={this.handleSubmit}>
+          <fieldset>
+            <label>Energy Consumption 8760:
+              <br /><input type="file" defaultValue={this.state["csvFile"] || ''}
+                name="csvFile"
+                accept=".csv"
+                placeholder="file.csv"
+                className="inputClass"
+                onChange={this.handleChange} /></label>
+          </fieldset>
+          <fieldset>
+            <button type="submit">Next</button>
+          </fieldset>
+        </form>
+
       </div>
     )
   }
