@@ -14,10 +14,10 @@ class SolarCsvForm extends React.Component {
 
 	handleSubmit=(event)=> {
     event.preventDefault();
-    const path = "/ConsumptionCsvForm";
+    const path = "/#/ConsumptionCsvForm";
     const formData = Object.assign(this.state);
     window.sessionStorage.setItem('form-data-Solar', JSON.stringify(formData));
-    this.props.history.push(path);
+    window.location.assign( window.location.origin + path );
   }
 
   handleChange=(event)=> {

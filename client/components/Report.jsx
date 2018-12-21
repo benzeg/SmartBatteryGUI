@@ -19,12 +19,12 @@ class Report extends React.Component {
           <Row className="show-grid">
             <Col xs={6} md={4}>
               <div id="batterycycles">
-                <Image style={imgStyle} src="/battery.png" />
+                <Image style={imgStyle} src="./battery.png" />
               </div>
             </Col>
             <Col xs={6} md={4}>
               <div id="batterysavings">
-                <Image style={imgStyle} src="/battery_savings.png" />
+                <Image style={imgStyle} src="./battery_savings.png" />
               </div>
             </Col>
           </Row>

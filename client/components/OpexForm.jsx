@@ -18,10 +18,10 @@ class OpexForm extends React.Component {
   
 	handleSubmit(event) {
     event.preventDefault();
-    const path = "/SolarCsvForm";
+    const path = "/#/SolarCsvForm";
     const formData = Object.assign(this.state);
     window.sessionStorage.setItem('form-data-Opex', JSON.stringify(formData));
-    this.props.history.push(path);
+    window.location.assign( window.location.origin + path );
   }
 
   handleInputChange(event) {

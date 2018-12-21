@@ -13,10 +13,10 @@ class ConsumptionCsvForm extends React.Component {
 
 	handleSubmit=(event)=> {
     event.preventDefault();
-    const path = "/ElectricRateCsvForm";
+    const path = "/#/ElectricRateCsvForm";
     const formData = Object.assign(this.state);
     window.sessionStorage.setItem('form-data-Consumption', JSON.stringify(formData));
-    this.props.history.push(path);
+    window.location.assign( window.location.origin + path );
   }
 
   handleChange=(event)=> {
