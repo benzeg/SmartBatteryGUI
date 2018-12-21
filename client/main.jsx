@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Route, Redirect } from 'react-router-dom';
 import CommercialUsesForm from './components/CommercialUsesForm.jsx';
 import BatteryDesignForm from './components/BatteryDesignForm.jsx';
 import SolarCsvForm from './components/SolarCsvForm.jsx';
@@ -42,7 +42,7 @@ class Main extends Component {
 				<h1>Smart Battery GUI</h1>
 				<Breadcrumb id="nav">
 					{formPages.list.map((d, index)=>
-						<Breadcrumb.Item key={index} href={d} active={this.props.history.location.pathname === d}>
+						<Breadcrumb.Item key={index} href={`#${d}`} active={window.location.hash === `#${d}`}>
 							{formPages.parseTitle(d)}
 						</Breadcrumb.Item>
 					)}
@@ -67,5 +67,5 @@ document.addEventListener('DOMContentLoaded', function() {
 	const app = document.createElement('div');
     app.setAttribute('id', 'app');
     document.body.insertAdjacentElement('afterbegin', app);
-	render( <BrowserRouter><Route path="/" component={Main}></Route></BrowserRouter>, app);
+	render( <HashRouter><Main/></HashRouter>, app);
 }); 
