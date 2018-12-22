@@ -14,10 +14,10 @@ class ElectricRateCsvForm extends React.Component {
 
 	handleSubmit=(event)=> {
     event.preventDefault();
-    const path = "/#/Report";
+    const path = "#/Report";
     const formData = Object.assign(this.state);
     window.sessionStorage.setItem('form-data-ElectricRate', JSON.stringify(formData));
-    window.location.assign( window.location.origin + path );
+    window.location.assign( window.location.href.replace(/#.*/g, path) );
   }
 
   handleChange=(event)=> {

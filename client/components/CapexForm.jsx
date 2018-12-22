@@ -24,10 +24,10 @@ class CapexForm extends React.Component {
 
 	handleSubmit(event) {
     event.preventDefault();
-    const path = "/#/OpexForm";
+    const path = "#/OpexForm";
     const formData = Object.assign(this.state);
     window.sessionStorage.setItem('form-data-Capex', JSON.stringify(formData));
-    window.location.assign( window.location.origin + path );
+    window.location.assign( window.location.href.replace(/#.*/g, path) );
   }
 
   handleInputChange(event) {

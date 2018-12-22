@@ -22,7 +22,7 @@ class BatteryDesignForm extends React.Component {
 
 	handleSubmit(event) {
     event.preventDefault();
-    const path = "/#/CapexForm";
+    const path = "#/CapexForm";
     const formData = Object.assign(this.state);
     for (var key in formData) {
       if (formData[key] === null) {
@@ -30,7 +30,7 @@ class BatteryDesignForm extends React.Component {
       }
     }
     window.sessionStorage.setItem('form-data-BatteryDesign', JSON.stringify(formData));
-    window.location.assign( window.location.origin + path );
+    window.location.assign( window.location.href.replace(/#.*/g, path) );
   }
 
   handleInputChange(event) {
