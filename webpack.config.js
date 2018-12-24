@@ -7,7 +7,7 @@ module.exports = {
     index: './client/main.jsx',
   },
   output: {
-    path: path.resolve(__dirname, 'www'),
+    path: path.resolve(__dirname, 'docs'),
     filename: '[name].bundle.js'
   },
   mode: env || 'development',
