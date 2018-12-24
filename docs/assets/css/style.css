@@ -1,26 +1,35 @@
+body {
+  margin: 0 0 !important;
+  padding: 0 0 !important;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: flex !important;
+  justify-content: center;
+  padding-top: 10vh;
+  box-sizing: border-box;
+}
+
 #main {
-  padding-left: 30px;
+  width: 100%;
+  max-width: 1200px !important;
+  font-size: 16px !important;
 }
 
-#nav {
-  position: absolute;
-  left: 0;
-}
-
-#nav + * {
-  margin-top: calc(3em + 15px);
-}
-
-form {
-  display: flex;
+a {
+  font-size: 1.5em !important;
+  font-weight: 700 !important;  
 }
 
 fieldset {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
 }
 
-fieldset + fieldset {
-  margin-left: 30px;
+button {
+  color: #000;
+  font-size: 1.5em !important;
+  font-weight: 700 !important;
 }
-

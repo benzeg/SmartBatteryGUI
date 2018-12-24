@@ -1,7 +1,7 @@
 {
-  "short_name": "Pool",
-  "name": "Pool 2-D",
-  "description": "The results of an experiement for build a library to simulate collision with friction in 2 dimensional space.  Drawn using Scalar vector graphics.",
+  "short_name": "SmartBattery",
+  "name": "Smart Battery GUI",
+  "description": "",
   "lang": "en-US",
   "icons": [
     {
@@ -19,6 +19,6 @@
   "background_color": "#252525",
   "display": "standalone",
   "orientation": "landscape",
-  "scope": "/pool-2d/",
+  "scope": "/smartbatterygui/",
   "theme_color": "#252525"
 }
