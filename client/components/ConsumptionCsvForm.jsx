@@ -30,7 +30,7 @@ class ConsumptionCsvForm extends React.Component {
   render() {
     return (
       <div>
-        <h2>Utility</h2>
+        <h2>Utilities Consumption</h2>
 
         <form onSubmit={this.handleSubmit}>
           <fieldset>

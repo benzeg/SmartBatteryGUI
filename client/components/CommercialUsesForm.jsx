@@ -67,27 +67,27 @@ class CommercialUsesForm extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <fieldset>
                   <label>
-                    <br /><input name="demandCharges" type="checkbox" checked={this.state["demandCharges"]}
+                    <input name="demandCharges" type="checkbox" checked={this.state["demandCharges"]}
                       onChange={this.handleInputChange} />
                     Demand charges</label>
                   <label>
-                    <br /><input name="arbitrage" type="checkbox" checked={this.state["arbitrage"]}
+                    <input name="arbitrage" type="checkbox" checked={this.state["arbitrage"]}
                       onChange={this.handleInputChange} />
                     Arbitrage</label>
                   <label>
-                    <br /><input name="peakingCapacity" type="checkbox" checked={this.state["peakingCapacity"]}
+                    <input name="peakingCapacity" type="checkbox" checked={this.state["peakingCapacity"]}
                       onChange={this.handleInputChange} />
                     Peaking Capacity (e-mobility)</label>
                   <label>
-                    <br /><input name="transmissionDistribution" type="checkbox" checked={this.state["transmissionDistribution"]}
+                    <input name="transmissionDistribution" type="checkbox" checked={this.state["transmissionDistribution"]}
                       onChange={this.handleInputChange} />
                     Transmission and distribution investment deferment (e-mobility)</label>
                   <label>
-                    <br /><input name="distributedGen" type="checkbox" checked={this.state["distributionGeneration"]}
+                    <input name="distributedGen" type="checkbox" checked={this.state["distributionGeneration"]}
                       onChange={this.handleInputChange} />
                     Distributed Generation Support / Distributed Storage (e-mobility)</label>
                   <label>
-                    <br /><input name="ancillary" type="checkbox" checked={this.state["ancillary"]}
+                    <input name="ancillary" type="checkbox" checked={this.state["ancillary"]}
                       onChange={this.handleInputChange} />
                     Ancillary Services</label>
                   <label>Additional grid data: <br /><input type="file" checked={this.state["csvFile"]}

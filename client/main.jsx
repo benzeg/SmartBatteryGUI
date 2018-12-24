@@ -12,17 +12,17 @@ import OpexForm from './components/OpexForm.jsx';
 import { Breadcrumb } from 'react-bootstrap';
 
 const formPages = {
-	list: [
-		'/',
-		'/CommercialUsesForm',
-		'/BatteryDesignForm',
-		'/CapexForm',
-		'/OpexForm',
-		'/SolarCsvForm',
-		'/ConsumptionCsvForm',
-		'/ElectricRateCsvForm',
-		'/Report'],
-	parseTitle: function(path) { return path.replace(/\//g, '').replace(/Csv/g, '').replace(/Form/g, '').replace(/[a-z](?=[A-Z])/g, '$& ')} 	
+list: [
+	      '/',
+      '/CommercialUsesForm',
+      '/BatteryDesignForm',
+      '/CapexForm',
+      '/OpexForm',
+      '/SolarCsvForm',
+      '/ConsumptionCsvForm',
+      '/ElectricRateCsvForm',
+      '/Report'],
+      parseTitle: function(path) { return path.replace(/\//g, '').replace(/Csv/g, '').replace(/Form/g, '').replace(/[a-z](?=[A-Z])/g, '$& ')} 	
 };
 
 class Main extends Component {
@@ -38,34 +38,34 @@ class Main extends Component {
 
 	render() {
 		return (
-			<div id="main">
+				<div id="main">
 				<h1>Smart Battery GUI</h1>
 				<Breadcrumb id="nav">
-					{formPages.list.map((d, index)=>
+				{formPages.list.map((d, index)=>
 						<Breadcrumb.Item key={index} href={`#${d}`} active={window.location.hash === `#${d}`}>
-							{formPages.parseTitle(d)}
+						{formPages.parseTitle(d)}
 						</Breadcrumb.Item>
-					)}
+						)}
 				</Breadcrumb>
 				<div>
-					<Route exact path="/" component={()=><Redirect to="/CommercialUsesForm"/>} />
-					<Route path="/CommercialUsesForm" component={CommercialUsesForm} />
-					<Route path="/BatteryDesignForm" component={BatteryDesignForm} />
-					<Route path="/CapexForm" component={CapexForm} />
-					<Route path="/OpexForm" component={OpexForm} />
-					<Route path="/SolarCsvForm" component={SolarCsvForm} />
-					<Route path="/ConsumptionCsvForm" component={ConsumptionCsvForm} />
-					<Route path="/ElectricRateCsvForm" component={ElectricRateCsvForm} />
-					<Route path="/Report" component={Report} />
+				<Route exact path="/" component={()=><Redirect to="/CommercialUsesForm"/>} />
+				<Route path="/CommercialUsesForm" component={CommercialUsesForm} />
+				<Route path="/BatteryDesignForm" component={BatteryDesignForm} />
+				<Route path="/CapexForm" component={CapexForm} />
+				<Route path="/OpexForm" component={OpexForm} />
+				<Route path="/SolarCsvForm" component={SolarCsvForm} />
+				<Route path="/ConsumptionCsvForm" component={ConsumptionCsvForm} />
+				<Route path="/ElectricRateCsvForm" component={ElectricRateCsvForm} />
+				<Route path="/Report" component={Report} />
 				</div>
-			</div>
-		)
+				</div>
+				)
 	}
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-	const app = document.createElement('div');
-    app.setAttribute('id', 'app');
-    document.body.insertAdjacentElement('afterbegin', app);
-	render( <HashRouter><Main/></HashRouter>, app);
-}); 
+		const app = document.createElement('div');
+		app.setAttribute('id', 'app');
+		document.body.insertAdjacentElement('afterbegin', app);
+		render( <HashRouter><Main/></HashRouter>, app);
+		}); 
