@@ -5,8 +5,9 @@
 layout: home
 ---
 ## What it does
-GUI interface for the [Smart battery for smart energy usage][module] module.
+This program provides a graphical interface for [smart-battery-for-smart-energy-usage][module].
 
+## How it works
 ### [LIVE DEMO][demo]{:target="_blank"}
 [demo]: /demo.html
 [module]: https://github.com/AnatolyPavlov/smart-battery-for-smart-energy-usage

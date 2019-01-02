@@ -33,3 +33,7 @@ button {
   font-size: 1.5em !important;
   font-weight: 700 !important;
 }
+
+.panel-body {
+  color: #000;
+}
