@@ -5,10 +5,8 @@
 layout: home
 ---
 ## What it does
-This program will let you play a game of pool in 2-dimensional top-down view.
-
-## How it works
-The results of an experiment for simulating collision with friction in 2-D using pure javascript.  Used SVG for graphics.
+GUI interface for the [Smart battery for smart energy usage][module] module.
 
 ### [LIVE DEMO][demo]{:target="_blank"}
 [demo]: /demo.html
+[module]: https://github.com/AnatolyPavlov/smart-battery-for-smart-energy-usage
