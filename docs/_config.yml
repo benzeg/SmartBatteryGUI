@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: SmartBatteryGUI
 description: A GUI client.
-baseurl: / # the subpath of your site, e.g. /blog
+baseurl: # the subpath of your site, e.g. /blog
 url: https://benzeg.github.io/smartbatterygui # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Benze_Gong
 github_username:  benzeg
